@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Health Monitor</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Health Monitor</h1>
+      <div class="topbar">
+        <div class="pill" id="userBadge">Not signed in</div>
+        <button class="btn" id="signBtn">Sign in / Register</button>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- Sidebar -->
+      <aside class="card">
+        <h3>Quick Actions</h3>
+        <label>Name</label>
+        <input id="nameInput" placeholder="Your name" />
+        <label>Email</label>
+        <input id="emailInput" placeholder="name@example.com" />
+        <div style="margin-top:10px">
+          <button class="btn" id="registerBtn">Register</button>
+          <button class="btn" id="loginBtn">Sign in</button>
+        </div>
+
+        <hr />
+        <h4>Add Measurement</h4>
+        <label>Type</label>
+        <select id="mType">
+          <option value="heart_rate">Heart rate (bpm)</option>
+          <option value="blood_pressure">Blood pressure (mmHg)</option>
+          <option value="spo2">SpO₂ (%)</option>
+          <option value="weight">Weight (kg)</option>
+        </select>
+
+        <div id="bpInputs" style="display:none;margin-top:10px">
+          <label>Systolic</label>
+          <input id="bpSys" type="number" placeholder="120" />
+          <label>Diastolic</label>
+          <input id="bpDia" type="number" placeholder="80" />
+        </div>
+
+        <div id="singleInputWrap" style="margin-top:10px">
+          <label>Value</label>
+          <input id="mValue" type="number" placeholder="e.g., 72" />
+        </div>
+
+        <label style="margin-top:10px">Time</label>
+        <input id="mTime" type="datetime-local" />
+        <button class="btn" id="addM" style="margin-top:10px">Add</button>
+      </aside>
+
+      <!-- Main content -->
+      <main>
+        <div class="card">
+          <h2>Dashboard</h2>
+          <div id="alerts"></div>
+          <div class="pill">Measurements: <span id="countBadge">0</span></div>
+        </div>
+
+        <div class="card">
+          <h3>Trends</h3>
+          <select id="chartMetric">
+            <option value="heart_rate">Heart rate</option>
+            <option value="blood_pressure_sys">BP (Systolic)</option>
+            <option value="blood_pressure_dia">BP (Diastolic)</option>
+            <option value="spo2">SpO₂</option>
+            <option value="weight">Weight</option>
+          </select>
+          <button class="btn" id="refreshChart">Refresh</button>
+          <canvas id="trendChart"></canvas>
+        </div>
+
+        <div class="card">
+          <h3>Recent Measurements</h3>
+          <div class="list" id="measurementList"></div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<!-- Inside sidebar (Quick Actions) -->
+<label>Password</label>
+<input id="passwordInput" type="password" placeholder="Enter password" />
+
+<div style="margin-top:10px">
+  <button class="btn" id="registerBtn">Register</button>
+  <button class="btn" id="loginBtn">Sign in</button>
+  <button class="btn" id="logoutBtn" style="display:none">Log out</button>
+</div>
+<div style="margin-top:10px">
+  <button class="btn" id="registerBtn">Register</button>
+  <button class="btn" id="loginBtn">Sign in</button>
+  <button class="btn" id="logoutBtn" style="display:none">Log out</button>
+  <button class="btn" id="forgotBtn">Forgot Password?</button>
+</div>
+<h3>Add Health Data</h3>
+
+<label for="mType">Measurement Type</label>
+<select id="mType">
+  <option value="heart_rate">Heart Rate</option>
+  <option value="blood_pressure">Blood Pressure</option>
+  <option value="oxygen">SpO₂</option>
+  <option value="weight">Weight</option>
+</select>
+
+<!-- Value input -->
+<input id="mValue" type="number" placeholder="Enter value" />
+
+<!-- Blood pressure special inputs -->
+<div id="bpInputs" style="display:none">
+  <input id="bpSys" type="number" placeholder="Systolic" />
+  <input id="bpDia" type="number" placeholder="Diastolic" />
+</div>
+
+<!-- Time input -->
+<label for="mTime">Recorded Time</label>
+<input id="mTime" type="datetime-local" />
+
+<button class="btn" id="addM">➕ Add Measurement</button>
